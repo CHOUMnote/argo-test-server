@@ -1,15 +1,17 @@
 replicaCount: 1
 
 image:
-  repository: rlawlgh001028/goapp:latest
+  repository: rlawlgh001028/goapp
   tag: latest
   pullPolicy: IfNotPresent
-
-service:
-  type: ClusterIP
-  port: 80
 
 envSecret:
   name: goapp-secret
   key: GREETING
   value: Hello from ARGO-CD!
+  
+service:
+  name: goapp
+  type: NodePort
+  port: 80
+  targetPort: 8080
