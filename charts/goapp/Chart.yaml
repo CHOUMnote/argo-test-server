@@ -1,0 +1,4 @@
+apiVersion: v2
+name: goapp
+version: 1.0.0
+description: A Helm Test Chart for Go Application
