@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: goapp
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/CHOUMnote/argo-test-server.git'
+    targetRevision: HEAD
+    path: charts/goapp  # charts 디렉토리 아래 goapp 차트 경로로 수정 필요
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: webapps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
